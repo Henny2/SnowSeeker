@@ -29,7 +29,6 @@ struct ResortView: View {
                     Text("Facilities")
                         .font(.headline)
                     Text(resort.facilities, format: .list(type: .and))
-//                    Text(resort.facilities.joined(separator: ", "))
                         .padding(.vertical)
                 }
                 .padding(.horizontal)
