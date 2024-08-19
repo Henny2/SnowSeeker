@@ -19,6 +19,7 @@
 		403CF7BB2C164D7200C0B012 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403CF7BA2C164D7200C0B012 /* ContentView.swift */; };
 		403CF7BD2C164D7500C0B012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 403CF7BC2C164D7500C0B012 /* Assets.xcassets */; };
 		403CF7C02C164D7500C0B012 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 403CF7BF2C164D7500C0B012 /* Preview Assets.xcassets */; };
+		4079CDD82C72C44100D094A0 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079CDD72C72C44000D094A0 /* Facility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		403CF7BA2C164D7200C0B012 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		403CF7BC2C164D7500C0B012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		403CF7BF2C164D7500C0B012 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4079CDD72C72C44000D094A0 /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				402523862C1FB2EB0053A84E /* Bunde-Decodable.swift */,
 				403CF7BE2C164D7500C0B012 /* Preview Content */,
 				402523882C1FBDCA0053A84E /* WelcomeView.swift */,
+				4079CDD72C72C44000D094A0 /* Facility.swift */,
 			);
 			path = SnowSeeker;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			files = (
 				402523892C1FBDCA0053A84E /* WelcomeView.swift in Sources */,
 				4025238D2C1FF05B0053A84E /* SkiDetailsView.swift in Sources */,
+				4079CDD82C72C44100D094A0 /* Facility.swift in Sources */,
 				4025238F2C1FF1250053A84E /* ResortDetailsView.swift in Sources */,
 				403CF7BB2C164D7200C0B012 /* ContentView.swift in Sources */,
 				402523852C1FB2790053A84E /* Resort.swift in Sources */,
