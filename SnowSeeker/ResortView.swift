@@ -13,6 +13,8 @@ struct ResortView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass // tell us whether we have a regular or compact horizontal size class
     @Environment(\.dynamicTypeSize) var dynamicTypeSize
     
+    @Environment(Favorites.self) var favorites
+    
     @State private var selectedFacility: Facility?
     @State private var showingFacility = false
     var body: some View {
@@ -61,6 +63,15 @@ struct ResortView: View {
                     .padding(.vertical)
                 }
                 .padding(.horizontal)
+                Button(favorites.contain(resort) ? "Remove from favorites" : "Add to favorites") {
+                    if favorites.contain(resort) {
+                        favorites.remove(resort)
+                    } else {
+                        favorites.add(resort)
+                    }
+                }
+                    .buttonStyle(.borderedProminent)
+                    .padding()
             }
         }
         .navigationTitle("\(resort.name), \(resort.country)")
@@ -76,5 +87,6 @@ struct ResortView: View {
 
 #Preview {
     ResortView(resort: .example)
+        .environment(Favorites())
 }
 
