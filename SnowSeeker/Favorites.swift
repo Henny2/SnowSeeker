@@ -9,11 +9,22 @@ import SwiftUI
 
 @Observable
 class Favorites {
+//    private var resorts: Set<String>
     private var resorts: Set<String>
     private let key = "Favorites"
     
     init() {
+        
+//    https://www.hackingwithswift.com/books/ios-swiftui/saving-and-loading-data-with-userdefaults
+        if let data = UserDefaults.standard.data(forKey: key) {
+            if let decoded = try? JSONDecoder().decode(Set<String>.self, from: data) {
+                resorts = decoded
+                return
+            }
+        }
+
         resorts = []
+//        resorts = []
     }
     
     func contain(_ resort: Resort) -> Bool {
@@ -31,6 +42,11 @@ class Favorites {
     }
     
     func save() {
-        
+//        let test = ["les-trois-vallees"]
+        print(resorts)
+//        UserDefaults.standard.set(resorts, forKey: key)
+        if let encoded = try? JSONEncoder().encode(resorts) {
+                UserDefaults.standard.set(encoded, forKey: key)
+            }
     }
 }
