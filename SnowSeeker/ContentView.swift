@@ -8,19 +8,36 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    enum SortOrder {
+        case alphabetical, byCountry
+    }
     // for sorting a list: https://xavier7t.com/swiftui-list-with-sort-options
+    // menu button for sorting: https://www.hackingwithswift.com/books/ios-swiftui/dynamically-sorting-and-filtering-query-with-swiftui
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
+    
+    var sortedResorts: [Resort] {
+        if sortOrder == .alphabetical {
+            return resorts.sorted { $0.name < $1.name }
+        }
+        else if sortOrder == .byCountry {
+            return resorts.sorted { $0.country < $1.country }
+        }
+        else {
+            return resorts
+        }
+    }
     
     @State private var favorites = Favorites()
     @State private var searchText = ""
-    
+    @State private var sortOrder: SortOrder = .alphabetical
    
     
     var filteredResorts: [Resort] {
         if searchText.isEmpty {
-            resorts
+            sortedResorts
         } else {
-            resorts.filter {
+            sortedResorts.filter {
                 $0.name.localizedStandardContains(searchText)
             }
         }
@@ -42,8 +59,14 @@ struct ContentView: View {
                         VStack(alignment: .leading){
                             Text(resort.name)
                                 .font(.headline)
-                            Text("\(resort.runs) runs")
-                                .foregroundStyle(.secondary)
+                            HStack {
+                                Text(resort.country)
+                                    .foregroundStyle(.secondary)
+                                Text("•")
+                                    .foregroundStyle(.secondary)
+                                Text("\(resort.runs) runs")
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                         
                         if favorites.contain(resort){
@@ -60,6 +83,14 @@ struct ContentView: View {
                 ResortView(resort: resort)
             }
             .searchable(text: $searchText, prompt: "Search for a resort.")
+            .toolbar {
+                Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                    Picker("Sort", selection: $sortOrder) {
+                        Text("Sort by Name").tag(SortOrder.alphabetical)
+                        Text("Sort by Country").tag(SortOrder.byCountry)
+                    }
+                }
+            }
                 
         } detail: {
             WelcomeView()
